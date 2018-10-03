@@ -18,4 +18,29 @@ public class DictionaryCommandline {
             System.out.println(i+1+"   | "+Dic.getArray().get(i).getWordTarget()+"  | "+Dic.getArray().get(i).getWordExplain());
         }
     }
+    public void dictionaryBasic()
+    {
+        DictionaryManagement input=new DictionaryManagement();
+        Dictionary word=new Dictionary();
+        word=input.insertFromFile();
+        DictionaryCommandline output=new DictionaryCommandline();
+        output.showAllWords(word);
+    }
+    public void dictionaryAdvanced()
+    {
+        DictionaryManagement input=new DictionaryManagement();
+        Dictionary word=new Dictionary();
+        word=input.insertFromFile();
+        DictionaryCommandline output=new DictionaryCommandline();
+        output.showAllWords(word);
+        String Word;
+        if((Word=input.dictionaryLookup(word))!=null)
+        {
+            System.out.println("This word mean: "+Word);
+        }
+        else
+        {
+            System.out.println("This word isn't in Dictionary");
+        }
+    }
 }
