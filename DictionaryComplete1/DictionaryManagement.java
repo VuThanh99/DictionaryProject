@@ -46,7 +46,7 @@ public class DictionaryManagement {
         try
         {
             Dictionary Word=new Dictionary();
-            File file= new File("D:\\dic2.txt");
+            File file= new File("D:\\dic.txt");
             FileReader Reader = new FileReader(file);
             BufferedReader Buffer= new BufferedReader(Reader);
             String count=Buffer.readLine();
@@ -54,8 +54,8 @@ public class DictionaryManagement {
             {
                 Word NewWord= new Word();
                 int i= count.lastIndexOf(9);//tab=9
-                NewWord.setWordTarget(count.substring(i).trim());
-                NewWord.setWordExplain(count.substring(0,i).trim());
+                NewWord.setWordTarget(count.substring(0,i));
+                NewWord.setWordExplain(count.substring(i));
                 Word.addWord(NewWord);
                 count=Buffer.readLine();
             }
@@ -124,17 +124,16 @@ public class DictionaryManagement {
     }
     public Dictionary fixWord(Dictionary dictionary)
     {
-        System.out.println("Fix word: ");
-        Scanner scanner=new Scanner(System.in);
-        String fix=scanner.nextLine();
-        for(int i=0;i<dictionary.getArray().size();i++)
-        {
-            if(fix.equals(dictionary.getArray().get(i).getWordTarget()))
+        System.out.println("The word that you want to fix: ");
+        Scanner scanner= new Scanner(System.in);
+        String editWord = scanner.nextLine();
+        for(int i=0;i<dictionary.getArray().size();i++){
+            if(editWord.equals(dictionary.getArray().get(i).getWordTarget()))
             {
                 System.out.println("Fix word: ");
-                dictionary.getArray().get(i).getWordTarget(scanner.nextLine());
-                System.out.println("Fix mean: ");
-                dictionary.getArray().get(i).getWordExplain(scanner.nextLine());
+                dictionary.getArray().get(i).setWordTarget(scanner.nextLine());
+                System.out.println("Fix word mean: ");
+                dictionary.getArray().get(i).setWordExplain(scanner.nextLine());
             }
         }
         return dictionary;
@@ -144,7 +143,7 @@ public class DictionaryManagement {
     {
         try
         {
-            File file=new File("D:\\dic2.txt");
+            File file=new File("D:\\dic.txt");
             FileWriter fw= new FileWriter(file);
             for(int i=0;i<dictionary.getArray().size();i++)
             {

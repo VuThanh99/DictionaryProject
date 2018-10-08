@@ -55,14 +55,15 @@ public class DictionaryCommandline {
     public void dictionarySearcher(Dictionary dictionary)
     {
        Scanner scanner=new Scanner(System.in);
-       String word=scanner.nextLine();
-       System.out.println("Input word: ");
-       for(int i=0;i<dictionary.getArray().size();i++)
-       {
-           if(dictionary.getArray().get(i).getWordTarget().indexOf(word)>-1)
-           {
-               System.out.println(dictionary.getArray().get(i).getWordExplain());
-           }
-       }
+       System.out.println("Input the word: ");
+       String line = scanner.nextLine();
+        
+        for(int i=0;i<dictionary.getArray().size();i++)
+        {
+            if((dictionary.getArray().get(i).getWordTarget()).indexOf(line) > -1)
+            {
+                System.out.println(dictionary.getArray().get(i).getWordTarget());
+            }
+        }
     }
 }
